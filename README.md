@@ -53,6 +53,26 @@ bun lint       # ESLint
 bun format     # Prettier
 ```
 
+## Deploying to Cloudflare Pages
+
+The site is fully static, so no adapter is needed. In the Cloudflare dashboard go to Workers & Pages > Create > Pages > Connect to Git, pick this repo and use:
+
+| Setting                | Value           |
+| :--------------------- | :-------------- |
+| Production branch      | `master`        |
+| Framework preset       | Astro           |
+| Build command          | `bun run build` |
+| Build output directory | `dist`          |
+
+`.node-version` pins Node, and `public/_headers` sets security headers and long-lived caching for hashed assets and fonts. Or deploy from the terminal:
+
+```sh
+bun run build
+bunx wrangler pages deploy
+```
+
+Once the domain is known, set `site` in `astro.config.mjs` and add the custom domain in the Pages project.
+
 ## Still pending from the client
 
 Placeholders left in the copy until the client supplies the real values: contact email, location addresses, product screen specs, pricing and the book link.
