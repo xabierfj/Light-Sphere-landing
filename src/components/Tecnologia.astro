@@ -1,0 +1,56 @@
+---
+import Dimension from '@/assets/svg/dimension.svg';
+import { specs } from '@/consts';
+
+const [feature, ...rest] = specs;
+
+const value = (spec: (typeof specs)[number]) => spec.headline ?? spec.items?.join(' · ') ?? spec.benefit ?? '';
+---
+
+<section id="tecnologia" aria-labelledby="tecnologia-title" class="section-y border-t border-line">
+	<div class="wrap flex flex-col gap-12 md:gap-16">
+		<h2 id="tecnologia-title" class="heading-section max-w-[18ch]">
+			Ingeniería óptica pensada para no notarse.
+		</h2>
+
+		<div class="frame grid gap-1.5 lg:grid-cols-[1fr_1.35fr]">
+			<figure class="m-0 flex flex-col justify-between gap-8 border border-line bg-sheet p-6 sm:p-8">
+				<div class="flex items-center justify-between">
+					<span class="label">{feature.title}</span>
+				</div>
+				<div class="flex flex-col items-center gap-5">
+					<p class="m-0 font-display text-[clamp(4.5rem,11vw,7rem)] leading-none font-extralight tracking-tighter">
+						{feature.value}
+						<span class="ml-2 font-serif text-[0.4em] font-medium tracking-normal font-stretch-[87.5%]">{feature.unit}</span>
+					</p>
+					<Dimension class="w-full max-w-80" aria-hidden="true" />
+				</div>
+				<figcaption class="flex flex-col gap-1">
+					<p class="m-0 font-display text-xl font-light">{feature.benefit}</p>
+					<p class="m-0 text-sm text-graphite">{feature.detail}</p>
+				</figcaption>
+			</figure>
+						<div class="border border-line bg-sheet">
+				<div class="flex items-center justify-between border-b border-line px-6 py-3">
+					<span class="font-labels text-xs text-graphite">FICHA TÉCNICA · TC-01</span>
+					<span class="font-labels text-xs text-faint">REV. 2033</span>
+				</div>
+				<dl class="m-0">
+					{rest.map((spec) => (
+						<div class="grid gap-x-8 gap-y-1.5 border-b border-line px-6 py-6 last:border-b-0 sm:grid-cols-[11rem_1fr]">
+							<dt class="label pt-1">{spec.title}</dt>
+							<dd class="m-0 flex flex-col gap-1.5">
+								<span class="font-display text-[1.6rem] leading-tight font-light tracking-[-0.02em]">
+									{value(spec)}
+									{spec.tag && <span class="ml-2 align-middle chip">{spec.tag}</span>}
+								</span>
+								{spec.headline && spec.benefit && <span class="text-graphite">{spec.benefit}</span>}
+								<span class="text-sm text-muted">{spec.detail}</span>
+							</dd>
+						</div>
+					))}
+				</dl>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,29 @@
+---
+const items = [
+	'Un solo ojo',
+	'Nadie notará que lo llevas',
+	'Sin cortes visibles en el rostro',
+	'Un color que no cambia',
+	'Significados en estudio',
+	'Tu persona está en algún lugar',
+];
+---
+
+<div class="border-y border-line bg-sheet" aria-hidden="true">
+	<div class="film opacity-70"></div>
+	<div class="overflow-hidden py-2.5">
+		<div class="flex w-max animate-slide font-labels text-xs tracking-[0.06em] text-graphite uppercase">
+			{Array.from({ length: 4 }).map(() => (
+				<div class="flex">
+					{items.map((t, i) => (
+						<span class="inline-flex items-center gap-4 pr-10 whitespace-nowrap">
+							<span class="text-faint">TC·{String(i + 1).padStart(3, '0')}</span>
+							{t}
+						</span>
+					))}
+				</div>
+			))}
+		</div>
+	</div>
+	<div class="film rotate-180 opacity-70"></div>
+</div>

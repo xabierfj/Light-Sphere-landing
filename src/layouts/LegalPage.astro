@@ -1,0 +1,81 @@
+---
+import Footer from '@/components/Footer.astro';
+import Nav from '@/components/Nav.astro';
+import Layout from './Layout.astro';
+
+interface Props {
+	title: string;
+	code: string;
+	updated: string;
+}
+
+const { title, code, updated } = Astro.props;
+---
+
+<Layout title={`${title} · LightSphere Optics`} noindex>
+	<a href="#contenido" class="sr-only z-60 bg-ink px-4 py-2 font-labels text-xs text-paper uppercase focus:not-sr-only focus:fixed focus:top-2 focus:left-2">
+		Saltar al contenido
+	</a>
+	<Nav />
+	<main id="contenido" class="section-y">
+		<div class="wrap">
+			<div class="frame crop crop-lg">
+				<article class="border border-line bg-sheet">
+					<div class="flex flex-wrap items-center justify-between gap-x-6 gap-y-1 border-b border-line px-6 py-3 sm:px-10">
+						<span class="font-labels text-xs whitespace-nowrap text-graphite">{code}</span>
+						<span class="font-labels text-xs text-faint">Actualizado: {updated}</span>
+					</div>
+					<div class="border-b border-line bg-linear-to-r from-sheet via-sheet/90 to-panel px-6 py-10 sm:px-10 sm:py-14">
+						<h1 class="heading-section m-0">{title}</h1>
+					</div>
+					<div class="border-b border-line bg-panel/60 px-6 py-5 sm:px-10">
+						<p class="m-0 max-w-[68ch] text-graphite">
+							<span class="chip mr-2 align-middle">FICCIÓN</span>
+							LightSphere Optics y True Colors no existen. Esta web forma parte del universo de la novela <em>True Colors</em>, de SaraCS, y se ha creado para promocionarla. No vende productos ni presta servicios médicos.
+						</p>
+					</div>
+					<div class="legal flex max-w-[72ch] flex-col gap-8 px-6 py-10 sm:px-10 sm:py-12">
+						<slot />
+					</div>
+				</article>
+			</div>
+			<a href="/" class="btn btn-quiet crop mt-10">Volver a la página principal</a>
+		</div>
+	</main>
+	<Footer />
+</Layout>
+
+<style>
+	.legal :global(h2) {
+		margin: 0 0 0.75rem;
+		font-family: var(--font-labels);
+		font-size: 0.8125rem;
+		font-weight: 400;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--color-graphite);
+	}
+	.legal :global(p),
+	.legal :global(li) {
+		margin: 0;
+		color: var(--color-graphite);
+	}
+	.legal :global(p + p),
+	.legal :global(p + ul),
+	.legal :global(ul + p) {
+		margin-top: 0.75rem;
+	}
+	.legal :global(ul) {
+		margin: 0;
+		padding-left: 1.1rem;
+		list-style: square;
+	}
+	.legal :global(strong) {
+		font-weight: 600;
+		color: var(--color-ink);
+	}
+	.legal :global(a) {
+		color: var(--color-ink);
+		text-decoration: underline;
+	}
+</style>

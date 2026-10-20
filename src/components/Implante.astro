@@ -1,0 +1,63 @@
+---
+import { about, steps } from '@/consts';
+---
+
+<section id="implante" aria-labelledby="implante-title" class="section-y">
+	<div class="wrap flex flex-col gap-14 md:gap-20">
+		<div class="grid gap-6 md:grid-cols-[1.25fr_1fr] md:items-end md:gap-16">
+			<h2 id="implante-title" class="heading-section">
+				<span class="block">Tu vista no cambia.</span>
+				<span class="block">Hasta que aparece esa persona.</span>
+			</h2>
+			<p class="lede m-0">Un microimplante en un solo ojo, conectado al nervio óptico. En tu día a día no notas nada, y nadie nota que lo llevas.</p>
+		</div>
+
+		<div class="flex flex-col gap-5">
+			<div class="flex items-center gap-4">
+				<h3 class="subhead m-0 shrink-0">Cómo se vive</h3>
+				<div class="film flex-1" aria-hidden="true"></div>
+			</div>
+			<ol class="m-0 list-none border-t border-ink p-0">
+				{about.map((step) => (
+					<li class="grid gap-y-1 border-b border-line py-6 md:grid-cols-[1fr_1.2fr] md:items-baseline md:gap-8">
+						<h4 class:list={['m-0 font-display text-[clamp(1.35rem,2.4vw,1.9rem)] leading-tight font-light tracking-[-0.02em]']}>{step.title}</h4>
+						<p class="m-0 text-graphite">{step.desc}</p>
+					</li>
+				))}
+			</ol>
+		</div>
+
+		<div class="flex flex-col gap-5">
+			<div class="flex items-center gap-4">
+				<h3 class="subhead m-0 shrink-0">Cómo se instala</h3>
+				<div class="film flex-1" aria-hidden="true"></div>
+			</div>
+			<div class="frame">
+				<ol class="m-0 grid list-none grid-cols-1 border border-line bg-sheet p-0 md:grid-cols-4">
+					{steps.map((step, i) => (
+						<li class="flex flex-col gap-3 border-line p-6 not-last:border-b md:not-last:border-r md:not-last:border-b-0 lg:p-7">
+							<div class="flex items-center justify-between">
+								<span class="chip">
+									PASO {i + 1}/{steps.length}
+								</span>
+								<span class="relative block h-3 w-10" aria-hidden="true">
+									<span class="absolute inset-x-0 top-1/2 h-px bg-line-2"></span>
+									<span class="absolute inset-y-0.5 w-[1.5px] bg-ink" style={`left: ${10 + i * 25}%`}></span>
+								</span>
+							</div>
+							<h4 class="m-0 mt-3 text-lg leading-snug font-semibold">{step.title}</h4>
+							<p class="m-0 text-graphite">{step.desc}</p>
+						</li>
+					))}
+				</ol>
+			</div>
+			<p class="note m-0">
+				True Colors es un implante experimental que requiere intervención quirúrgica. Consulta el{' '}
+				<a href="/aviso-legal" class="text-ink underline">
+					aviso legal
+				</a>
+				.
+			</p>
+		</div>
+	</div>
+</section>

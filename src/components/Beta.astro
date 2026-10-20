@@ -1,0 +1,118 @@
+---
+import { locations } from '@/consts';
+
+const redeem = [
+	{ title: 'Pide tu código QR', desc: 'En tu sede, si ya estás en nuestra lista de clientes habituales.' },
+	{ title: 'Preséntalo en tu sede', desc: 'El día de la instalación.' },
+	{ title: 'Lo comprobamos allí', desc: 'Y la prueba corre de nuestra cuenta.' },
+];
+---
+
+<section id="beta" aria-labelledby="beta-title" class="section-y border-t border-line">
+	<div class="wrap">
+		<div class="frame grid gap-1.5 lg:grid-cols-[1fr_1.1fr]">
+			<!-- Left -->
+			<div class="flex flex-col border border-line bg-panel/70">
+				<div class="border-b border-line bg-linear-to-r from-sheet via-sheet/90 to-panel px-6 py-8 sm:px-8 sm:py-10">
+					<h2 id="beta-title" class="heading-section">
+						Únete a la beta.
+					</h2>
+				</div>
+
+				<div class="flex flex-col gap-8 px-6 py-8 sm:px-8">
+					<div class="flex flex-col gap-3">
+						<div class="flex flex-wrap items-center gap-3">
+							<span class="chip">
+								<b>BETA-TC</b> · válido hasta 20.09.2033
+							</span>
+							<span class="chip">Solo clientes habituales</span>
+						</div>
+						<p class="m-0 max-w-[52ch] text-graphite">
+							Si ya estabas en nuestra lista de clientes habituales, puedes probar True Colors{' '}
+							<strong class="font-semibold text-ink">gratis hasta el 20 de septiembre de 2033</strong>. Para el resto, es necesario esperar al lanzamiento oficial, en Washington
+							DC. Consulta la disponibilidad en cualquiera de nuestras sedes.
+						</p>
+					</div>
+
+					<div class="flex flex-col gap-4">
+						<h3 class="subhead m-0">Clientes habituales: cómo se canjea</h3>
+						<ol class="m-0 list-none border-t border-line-2 p-0">
+							{redeem.map((step, i) => (
+								<li class="grid grid-cols-[2.5rem_1fr] gap-x-3 border-b border-line py-3.5">
+									<span class="font-labels text-xs leading-6 text-faint">{String(i + 1).padStart(2, '0')}</span>
+									<p class="m-0">
+										<span class="font-semibold">{step.title}.</span> <span class="text-graphite">{step.desc}</span>
+									</p>
+								</li>
+							))}
+						</ol>
+						<a href="/#sedes" class="btn btn-quiet crop self-start max-sm:w-full">
+							Ver sedes
+						</a>
+					</div>
+					<p class="note m-0 mt-auto">La beta termina antes del lanzamiento oficial, el 3 de octubre de 2033 en Washington DC.</p>
+				</div>
+			</div>
+			<!-- Right: interest form on the sheet. -->
+			<div class="border border-line bg-sheet">
+				<div class="flex items-center justify-between border-b border-line px-6 py-3 sm:px-8">
+					<span class="font-labels text-xs text-graphite">SOLICITUD · BETA TRUE COLORS</span>
+					<span class="font-labels text-xs text-faint">FORM. 02</span>
+				</div>
+				<div class="flex flex-col gap-4 border-b border-line bg-panel/60 px-6 py-6 sm:px-8">
+					<span class="chip self-start">
+						<b>INSCRIPCIÓN ONLINE</b> · CERRADA
+					</span>
+					<p class="m-0 font-display text-2xl leading-snug font-light tracking-[-0.02em]">Las plazas de la beta se asignan en persona.</p>
+					<p class="m-0 max-w-[56ch] text-graphite">
+						Ven a tu sede LightSphere más cercana con tu documento de identidad. Allí te apuntamos en la lista, revisamos tu caso con un optometrista y te avisamos.
+					</p>
+					<a href="/#sedes" class="btn btn-primary crop self-start max-sm:w-full">
+						Encuentra tu sede
+					</a>
+				</div>
+				<form class="flex flex-col gap-5 px-6 py-8 sm:px-8" aria-describedby="beta-closed" onsubmit="return false">
+					<fieldset disabled class="m-0 flex min-w-0 flex-col gap-5 border-0 p-0">
+						<legend id="beta-closed" class="label mb-1 p-0">
+							Formulario desactivado · solo en sede
+						</legend>
+						<div class="grid gap-5 sm:grid-cols-2">
+							<label class="flex flex-col gap-2">
+								<span class="label">Nombre</span>
+								<input class="field" type="text" name="nombre" autocomplete="name" />
+							</label>
+							<label class="flex flex-col gap-2">
+								<span class="label">Correo electrónico</span>
+								<input class="field" type="email" name="email" autocomplete="email" />
+							</label>
+						</div>
+
+						<label class="flex flex-col gap-2">
+							<span class="label">Sede más cercana</span>
+							<select class="field" name="sede">
+								<option value="">Elige una sede</option>
+								{locations.map((l) => (
+									<option value={l.code}>{l.branch}</option>
+								))}
+							</select>
+						</label>
+
+						<label class="flex items-start gap-3 py-1">
+							<input type="checkbox" name="cliente" class="mt-1 size-4 shrink-0 accent-ink" />
+							<span class="text-graphite">Ya estoy en la lista de clientes habituales de LightSphere.</span>
+						</label>
+
+						<div class="border-t border-line pt-6">
+							<button type="submit" class="btn btn-primary crop max-sm:w-full">
+								Únete a la beta
+							</button>
+						</div>
+					</fieldset>
+					<p class="note m-0">
+						Apuntarte no garantiza plaza ni acceso gratuito. El acceso gratuito es solo para clientes habituales y se comprobará en el momento de la inscripción. Consulta nuestra{' '} <a href="/privacidad" class="text-ink underline"> política de privacidad </a>.
+					</p>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>

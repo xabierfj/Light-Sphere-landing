@@ -1,0 +1,35 @@
+---
+import Beta from '@/components/Beta.astro';
+import Footer from '@/components/Footer.astro';
+import Hero from '@/components/Hero.astro';
+import Implante from '@/components/Implante.astro';
+import Colores from '@/components/Colores.astro';
+import Layout from '@/layouts/Layout.astro';
+import Tecnologia from '@/components/Tecnologia.astro';
+import Nav from '@/components/Nav.astro';
+import Ticker from '@/components/Ticker.astro';
+import Productos from '@/components/Productos.astro';
+import Sedes from '@/components/Sedes.astro';
+import Precios from '@/components/Precios.astro';
+import FAQ from '@/components/FAQ.astro';
+---
+
+<Layout>
+	<a href="#contenido" class="sr-only z-60 bg-ink px-4 py-2 font-labels text-xs text-paper uppercase focus:not-sr-only focus:fixed focus:top-2 focus:left-2">
+		Saltar al contenido
+	</a>
+	<Nav />
+	<main id="contenido">
+		<Hero />
+		<Ticker />
+		<Implante />
+		<Colores />
+		<Tecnologia />
+		<FAQ />
+		<Beta />
+		<Productos />
+		<Sedes />
+		<Precios />
+	</main>
+	<Footer />
+</Layout>

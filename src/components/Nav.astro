@@ -1,0 +1,108 @@
+---
+import Logo from '@/assets/svg/logo_ls.svg';
+import { SECTIONS } from '@/consts';
+
+const links = SECTIONS.filter((section) => section.inNav).map((section) => ({
+	href: `/#${section.id}`,
+	label: section.label,
+}));
+---
+
+<header id="nav" class="sticky top-0 z-50 bg-paper/92 pt-3 pb-2 backdrop-blur-[6px]">
+	<div class="wrap">
+		<div class="crop crop-lg">
+			<div class="grid grid-cols-[1fr_auto_1fr] items-center gap-6 border border-line bg-panel/55 py-2 pr-2 pl-4 max-[960px]:flex max-[960px]:justify-between sm:pl-5">
+				<a href="/#inicio" aria-label="LightSphere, inicio" class="inline-flex min-h-11 items-center gap-3 text-ink no-underline">
+					<Logo aria-hidden="true" class="size-7 shrink-0" />
+					<span class="font-display text-[1.2rem] font-light tracking-[-0.02em]">LightSphere</span>
+					<span class="chip max-xl:hidden">TRUE COLORS</span>
+				</a>
+				<nav aria-label="Principal" class="max-[960px]:hidden">
+					<ul class="m-0 flex list-none gap-1 p-0">
+						{links.map((link) => (
+							<li>
+								<a
+									href={link.href}
+									class="relative block min-h-11 content-center px-2.5 text-[0.9375rem] whitespace-nowrap xl:px-3.5 text-graphite no-underline transition-colors duration-(--dur-fast) after:absolute after:inset-x-2.5 xl:after:inset-x-3.5 after:bottom-2 after:h-px after:origin-left after:scale-x-0 after:bg-ink after:transition-transform after:duration-(--dur) after:ease-smooth hover:text-ink aria-current:text-ink aria-current:after:scale-x-100 motion-reduce:transition-none motion-reduce:after:transition-none"
+								>
+									{link.label}
+								</a>
+							</li>
+						))}
+					</ul>
+				</nav>
+
+				<div class="flex items-center justify-end gap-2 max-[960px]:ml-auto">
+					<a href="/#beta" class="btn btn-quiet crop whitespace-nowrap max-sm:px-4 max-[359px]:hidden">
+						<span>
+							Únete<span class="max-sm:hidden"> a la beta</span>
+						</span>
+					</a>
+					<button
+						type="button"
+						id="nav-toggle"
+						aria-expanded="false"
+						aria-controls="nav-menu"
+						aria-label="Abrir menú"
+						class="group/toggle relative grid size-11 cursor-pointer place-items-center text-ink min-[961px]:hidden"
+					>
+						<span class="absolute h-px w-5 -translate-y-1.5 bg-current transition-transform duration-(--dur) ease-smooth group-aria-expanded/toggle:translate-y-0 group-aria-expanded/toggle:rotate-45 motion-reduce:transition-none"></span>
+						<span class="absolute h-px w-5 bg-current transition-opacity duration-(--dur-fast) group-aria-expanded/toggle:opacity-0 motion-reduce:transition-none"></span>
+						<span class="absolute h-px w-5 translate-y-1.5 bg-current transition-transform duration-(--dur) ease-smooth group-aria-expanded/toggle:translate-y-0 group-aria-expanded/toggle:-rotate-45 motion-reduce:transition-none"></span>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<nav id="nav-menu" aria-label="Menú móvil" hidden class="mt-3 border border-line bg-sheet min-[961px]:hidden">
+			<ul class="m-0 flex list-none flex-col p-0">
+				{links.map((link) => (
+					<li class="border-b border-line">
+						<a href={link.href} class="flex items-center justify-between px-4 py-3.5 text-base text-ink no-underline hover:bg-panel focus-visible:bg-panel">
+							{link.label}
+						</a>
+					</li>
+				))}
+			</ul>
+			<div class="p-3">
+				<a href="/#beta" class="btn btn-primary w-full">
+					Únete a la beta
+				</a>
+			</div>
+		</nav>
+	</div>
+</header>
+
+<script>
+	const toggle = document.querySelector<HTMLButtonElement>('#nav-toggle');
+	const menu = document.querySelector<HTMLElement>('#nav-menu');
+
+	function setOpen(open: boolean) {
+		if (!toggle || !menu) return;
+		toggle.setAttribute('aria-expanded', String(open));
+		toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+		menu.hidden = !open;
+	}
+
+	toggle?.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+	menu?.addEventListener('click', (e) => {
+		if ((e.target as HTMLElement).closest('a')) setOpen(false);
+	});
+	document.addEventListener('keydown', (e) => {
+		if (e.key === 'Escape') setOpen(false);
+	});
+	matchMedia('(min-width: 961px)').addEventListener('change', (e) => e.matches && setOpen(false));
+
+	const desktopLinks = document.querySelectorAll<HTMLAnchorElement>('nav[aria-label="Principal"] a');
+	const sections = document.querySelectorAll('main section[id]');
+	const observer = new IntersectionObserver(
+		(entries) => {
+			for (const entry of entries) {
+				if (!entry.isIntersecting) continue;
+				desktopLinks.forEach((link) => link.setAttribute('aria-current', String(link.hash === `#${entry.target.id}`)));
+			}
+		},
+		{ rootMargin: '-45% 0px -50% 0px' },
+	);
+	sections.forEach((section) => observer.observe(section));
+</script>

@@ -1,0 +1,56 @@
+---
+import { MapPin } from '@lucide/astro';
+import { locations } from '@/consts';
+---
+
+<section id="sedes" aria-labelledby="sedes-title" class="section-y border-t border-line">
+	<div class="wrap flex flex-col gap-10 md:gap-14">
+		<div class="grid gap-6 md:grid-cols-[1.25fr_1fr] md:items-end md:gap-16">
+			<h2 id="sedes-title" class="heading-section">
+				<span class="block">Cuatro sedes.</span>
+				<span class="block">Visitanos y prueba nuestros productos.</span>
+			</h2>
+			<p class="lede m-0">Fundada en Washington DC. Cuatro sedes en Estados Unidos donde nuentros optometristas te ajustan las lentillas en menos de cinco minutos.</p>
+		</div>
+
+		<div class="frame">
+			<div class="grid grid-cols-1 gap-1.5 sm:grid-cols-2 lg:grid-cols-4">
+				{locations.map((location) => (
+					<article class="flex flex-col border border-line bg-sheet">
+						<div class="flex items-center justify-between border-b border-line px-5 py-3">
+							<span class="font-labels text-xs text-graphite">{location.isPrincipal ? 'SEDE PRINCIPAL' : 'SEDE'}</span>
+							<span class="font-labels text-xs text-faint">{location.timezone === 'America/Los_Angeles' ? 'Pacific Time' : 'Eastern Time'}</span>
+						</div>
+						<div class="flex flex-1 flex-col gap-5 px-5 pt-6 pb-5">
+							<p class="m-0 font-display text-[clamp(3.5rem,6vw,4.5rem)] leading-none font-extralight tracking-[-0.04em]" aria-hidden="true">
+								{location.code}
+							</p>
+							<h3 class="m-0 font-serif text-[1.65rem] leading-none font-medium font-stretch-[87.5%]">{location.branch}</h3>
+							<p class="m-0 border-t border-line pt-4 text-[0.9375rem] leading-normal text-graphite">{location.address || '[DIRECCIÓN]'}</p>
+							<div class="flex flex-col gap-0.5">
+								<span class="label">Horario</span>
+								<span class="text-[0.9375rem]">{location.openingHours}</span>
+							</div>
+						</div>
+						<a
+							href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location.address)}`}
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label={`Cómo llegar a ${location.branch} (se abre en una pestaña nueva)`}
+							class="flex min-h-12 items-center justify-between border-t border-line px-5 text-sm font-medium text-ink no-underline transition-colors duration-(--dur-fast) hover:bg-panel motion-reduce:transition-none"
+						>
+							Cómo llegar
+							<MapPin class="size-4" stroke-width={1.5} aria-hidden="true" />
+						</a>
+					</article>
+				))}
+			</div>
+		</div>
+		<div class="flex flex-wrap items-center justify-between gap-6 border-t border-line pt-6">
+			<p class="m-0 text-graphite">Lentillas LightSphere disponibles en distribuidores de los 50 estados.</p>
+			<a role="link" href="#" aria-disabled="true" title="[ENLACE LIBRO]" class="btn btn-quiet crop max-sm:w-full cursor-pointer">
+				Reservar consulta
+			</a>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,352 @@
+@import 'tailwindcss';
+
+/* Outfit - Display, first headline line */
+@font-face {
+	font-family: 'Outfit';
+	src: url('/fonts/outfit-latin.woff2') format('woff2');
+	font-weight: 200 400;
+	font-style: normal;
+	font-display: swap;
+	unicode-range:
+		U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Playfair (87.5% width) - Condensed serif, second headline line */
+@font-face {
+	font-family: 'Playfair Condensed';
+	src: url('/fonts/playfair-condensed-latin.woff2') format('woff2');
+	font-weight: 400 600;
+	font-stretch: 87.5%;
+	font-style: normal;
+	font-display: swap;
+	unicode-range:
+		U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Hanken Grotesk - Body / UI */
+@font-face {
+	font-family: 'Hanken Grotesk';
+	src: url('/fonts/hanken-grotesk-latin.woff2') format('woff2');
+	font-weight: 400 700;
+	font-style: normal;
+	font-display: swap;
+	unicode-range:
+		U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* JetBrains Mono - Data callouts / Labels */
+@font-face {
+	font-family: 'JetBrains Mono';
+	src: url('/fonts/jetbrains-mono-latin.woff2') format('woff2');
+	font-weight: 400 500;
+	font-style: normal;
+	font-display: swap;
+	unicode-range:
+		U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@theme {
+	--font-display: 'Outfit', sans-serif;
+	--font-serif: 'Playfair Condensed', 'Playfair Display', serif;
+	--font-body: 'Hanken Grotesk', sans-serif;
+	--font-labels: 'JetBrains Mono', monospace;
+
+	--text-title-small: 20px;
+	--text-title-small--line-height: 1;
+
+	--text-body-medium: 14px;
+	--text-body-medium--line-height: 1.5;
+	--text-body-small: 8px;
+	--text-body-small--line-height: 1;
+
+	--color-paper: #fafafa;
+	--color-panel: #f1f1f1;
+	--color-sheet: #ffffff;
+	--color-ink: #111111;
+	--color-graphite: #444444;
+	--color-muted: #5f5f5f;
+	--color-faint: #8a8a8a;
+	--color-line: #dcdcdc;
+	--color-line-2: #b9b9b9;
+
+	--color-aura-blue: #6f97c4;
+	--color-aura-orange: #e0965f;
+
+	--ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+
+	--animate-slide: slide 160s linear infinite;
+	@keyframes slide {
+		to {
+			transform: translateX(-50%);
+		}
+	}
+}
+
+:root {
+	--gutter: clamp(16px, 4vw, 56px);
+	--maxw: 1320px;
+	--dur: 320ms;
+	--dur-fast: 160ms;
+}
+
+@utility wrap {
+	width: 100%;
+	max-width: var(--maxw);
+	margin-inline: auto;
+	padding-inline: var(--gutter);
+}
+
+@utility section-y {
+	padding-block: clamp(48px, 7vw, 104px);
+}
+
+@layer base {
+	html {
+		margin: 0;
+		width: 100%;
+		min-height: 100%;
+		color-scheme: light;
+		scrollbar-width: thin;
+		scrollbar-color: var(--color-graphite) var(--color-panel);
+		scroll-padding-top: 6rem;
+	}
+	@media (prefers-reduced-motion: no-preference) {
+		html {
+			scroll-behavior: smooth;
+		}
+	}
+
+	::selection {
+		background: var(--color-ink);
+		color: var(--color-paper);
+	}
+	:focus-visible {
+		outline: 2px solid var(--color-ink);
+		outline-offset: 3px;
+	}
+
+	body {
+		background-color: var(--color-paper);
+		color: var(--color-ink);
+		font-family: var(--font-body);
+		line-height: 1.6;
+		font-variant-numeric: tabular-nums;
+		caret-color: var(--color-ink);
+	}
+
+	a {
+		text-underline-offset: 4px;
+		text-decoration-thickness: 1px;
+	}
+}
+
+@layer components {
+	/* Corner crop marks, drawn just outside the element's box. */
+	.crop {
+		--tick: 9px;
+		--tick-gap: 5px;
+		--tick-c: var(--color-line-2);
+		position: relative;
+	}
+	.crop::before {
+		content: '';
+		position: absolute;
+		inset: calc(var(--tick-gap) * -1);
+		pointer-events: none;
+		--g: linear-gradient(var(--tick-c), var(--tick-c));
+		background:
+			var(--g) left top / var(--tick) 1px no-repeat,
+			var(--g) left top / 1px var(--tick) no-repeat,
+			var(--g) right top / var(--tick) 1px no-repeat,
+			var(--g) right top / 1px var(--tick) no-repeat,
+			var(--g) left bottom / var(--tick) 1px no-repeat,
+			var(--g) left bottom / 1px var(--tick) no-repeat,
+			var(--g) right bottom / var(--tick) 1px no-repeat,
+			var(--g) right bottom / 1px var(--tick) no-repeat;
+	}
+	.crop-lg {
+		--tick: 14px;
+		--tick-gap: 8px;
+	}
+
+	/* Hairline frame that holds a two-panel spread. */
+	.frame {
+		border: 1px solid var(--color-line);
+		background: var(--color-paper);
+		padding: 6px;
+	}
+
+	/* Film-strip tick ruler: a long tick every fifth. */
+	.film {
+		height: 10px;
+		background:
+			repeating-linear-gradient(to right, var(--color-line-2) 0 1px, transparent 1px 40px) left bottom / 100% 10px no-repeat,
+			repeating-linear-gradient(to right, var(--color-line) 0 1px, transparent 1px 8px) left bottom / 100% 5px no-repeat;
+	}
+
+	/* Mono data callout, the spec-sheet chip. */
+	.chip {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5em;
+		border: 1px solid var(--color-line-2);
+		background: var(--color-sheet);
+		padding: 3px 8px;
+		font-family: var(--font-labels);
+		font-size: 0.6875rem;
+		line-height: 1.5;
+		letter-spacing: 0.04em;
+		color: var(--color-graphite);
+		white-space: nowrap;
+	}
+	.chip b {
+		font-weight: 500;
+		color: var(--color-ink);
+	}
+
+	.label {
+		font-family: var(--font-labels);
+		font-size: 0.75rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--color-muted);
+	}
+
+	.subhead {
+		font-family: var(--font-labels);
+		font-size: 0.8125rem;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--color-graphite);
+	}
+
+	.note {
+		font-size: 0.875rem;
+		line-height: 1.5;
+		color: var(--color-muted);
+	}
+
+	.lede {
+		color: var(--color-graphite);
+		max-width: 52ch;
+		font-size: 1.0625rem;
+	}
+
+	/* Two-voice headline: light grotesk, then condensed serif with a grey last word. */
+	.heading-section {
+		font-family: var(--font-display);
+		font-size: clamp(2rem, 4.4vw, 3.6rem);
+		font-weight: 300;
+		line-height: 1.04;
+		letter-spacing: -0.035em;
+	}
+	.serif {
+		display: block;
+		font-family: var(--font-serif);
+		font-stretch: 87.5%;
+		font-weight: 500;
+		letter-spacing: -0.015em;
+		line-height: 1;
+		font-size: 1.08em;
+	}
+	.ink-fade {
+		color: var(--color-faint);
+	}
+
+	/* Buttons: square, bracketed by corner ticks. */
+	.btn {
+		position: relative;
+		display: inline-flex;
+		min-height: 44px;
+		align-items: center;
+		justify-content: center;
+		gap: 0.6em;
+		padding: 0 22px;
+		font-family: var(--font-body);
+		font-size: 0.9375rem;
+		font-weight: 500;
+		line-height: 1.2;
+		text-decoration: none;
+		cursor: pointer;
+		transition:
+			background-color var(--dur-fast) ease,
+			color var(--dur-fast) ease,
+			border-color var(--dur-fast) ease;
+	}
+	.btn-primary {
+		background: var(--color-graphite);
+		color: var(--color-sheet);
+		border: 1px solid var(--color-graphite);
+	}
+	.btn-primary:hover {
+		background: var(--color-ink);
+		border-color: var(--color-ink);
+	}
+	.btn-quiet {
+		background: var(--color-sheet);
+		color: var(--color-ink);
+		border: 1px solid var(--color-line-2);
+	}
+	.btn-quiet:hover {
+		border-color: var(--color-ink);
+	}
+	.btn[aria-disabled='true'] {
+		opacity: 0.7;
+		cursor: not-allowed;
+	}
+	.btn-quiet[aria-disabled='true']:hover {
+		background: var(--color-sheet);
+		border-color: var(--color-line-2);
+	}
+	.btn-primary[aria-disabled='true']:hover {
+		background: var(--color-graphite);
+		border-color: var(--color-graphite);
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.btn {
+			transition: none;
+		}
+	}
+
+	/* Form fields on the sheet. */
+	.field {
+		width: 100%;
+		min-height: 44px;
+		border: 1px solid var(--color-line-2);
+		background: var(--color-sheet);
+		padding: 10px 12px;
+		font: inherit;
+		color: var(--color-ink);
+	}
+	.field::placeholder {
+		color: var(--color-faint);
+	}
+	.field:hover {
+		border-color: var(--color-graphite);
+	}
+	.field:disabled {
+		background: var(--color-panel);
+		border-color: var(--color-line);
+		color: var(--color-faint);
+		cursor: not-allowed;
+	}
+	fieldset:disabled .btn,
+	fieldset:disabled input[type='checkbox'] {
+		opacity: 0.55;
+		cursor: not-allowed;
+	}
+	fieldset:disabled .btn-primary:hover {
+		background: var(--color-graphite);
+		border-color: var(--color-graphite);
+	}
+	.field:user-invalid {
+		border-color: var(--color-ink);
+		border-style: dashed;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.animate-slide {
+		animation: none;
+	}
+}

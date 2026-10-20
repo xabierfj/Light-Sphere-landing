@@ -1,0 +1,60 @@
+---
+import { products } from '@/consts';
+import ProductCataract from '@/assets/svg/product-cataract.svg';
+import ProductColor from '@/assets/svg/product-color.svg';
+import ProductLens from '@/assets/svg/product-lens.svg';
+import ProductMotion from '@/assets/svg/product-motion.svg';
+import ProductMyopia from '@/assets/svg/product-myopia.svg';
+
+const figures = {
+	lens: ProductLens,
+	color: ProductColor,
+	motion: ProductMotion,
+	myopia: ProductMyopia,
+	cataract: ProductCataract,
+};
+
+const span = (category: string) => (category === 'Lentillas' ? 'lg:col-span-2' : 'lg:col-span-3');
+---
+
+<section id="productos" aria-labelledby="productos-title" class="section-y border-t border-line">
+	<div class="wrap flex flex-col gap-10 md:gap-14">
+		<div class="grid gap-6 md:grid-cols-[1.25fr_1fr] md:items-end md:gap-16">
+			<h2 id="productos-title" class="heading-section">
+				Antes de True Colors, ya cuidábamos tu vista.
+			</h2>
+			<p class="lede m-0">Lentillas y cirugía ocular desde Washington DC. Nuestras lentillas se venden en distribuidores de todos los estados.</p>
+		</div>
+		<div class="frame">
+			<ul class="m-0 grid list-none grid-cols-1 gap-1.5 p-0 sm:grid-cols-2 lg:grid-cols-6">
+				{products.map((product, i) => {
+					const Figure = figures[product.figure];
+					return (
+						<li class:list={['flex flex-col border border-line bg-sheet', span(product.category), i === products.length - 1 && 'sm:max-lg:col-span-2']}>
+							<div class="flex items-center justify-between border-b border-line px-5 py-3">
+								<span class="font-labels text-xs text-graphite">{product.code}</span>
+								<span class="chip">{product.category.toUpperCase()}</span>
+							</div>
+							<div class="border-b border-line px-8 py-6">
+								<div class="mx-auto max-w-72">
+									<Figure class="block w-full" aria-hidden="true" />
+								</div>
+							</div>
+							<div class="flex flex-1 flex-col gap-2.5 px-5 pt-5 pb-6">
+								<h3 class="m-0 font-display text-[clamp(1.25rem,1.8vw,1.45rem)] leading-[1.2] font-light tracking-[-0.02em]">{product.name}</h3>
+								<p class="m-0 text-graphite">{product.desc}</p>
+								{product.specs && (
+									<ul class="m-0 mt-auto flex list-none flex-wrap gap-2 p-0 pt-3">
+										{product.specs.map((spec) => (
+											<li class="chip">{spec}</li>
+										))}
+									</ul>
+								)}
+							</div>
+						</li>
+					);
+				})}
+			</ul>
+		</div>
+	</div>
+</section>

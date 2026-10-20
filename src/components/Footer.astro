@@ -1,0 +1,47 @@
+---
+import { Heart } from '@lucide/astro';
+  const authorUrl = 'https://github.com/xabierfj';
+---
+
+<footer class="border-t border-line bg-sheet pt-12 pb-6">
+	<div class="wrap">
+	<div class="wrap flex flex-col gap-10">
+		<div class="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+			<div class="flex flex-col gap-4">
+				<p class="m-0 font-display text-2xl font-light tracking-[-0.02em]">LightSphere</p>
+				<p class="m-0 max-w-[46ch] text-sm text-graphite">
+					Nacimos en Washington DC como óptica de lentillas normales, de colores y con efectos de movimiento para disfraces y Halloween, y de cirugía de miopía y cataratas. True Colors es nuestro nuevo proyecto principal: se lanzó el 3 de octubre de 2033 en Washington DC.
+				</p>
+			</div>
+			<div id="contacto" class="flex flex-col gap-1.5 text-sm">
+				<span class="label mb-1">Contacto</span>
+				<span>[EMAIL]</span>
+				<span class="text-graphite">Washington DC · Nueva York</span>
+				<span class="text-graphite">Boston · Los Ángeles</span>
+			</div>
+			<div class="flex flex-col gap-1.5 text-sm">
+				<span class="label mb-1">Dirección</span>
+				<span>Elijah Brown</span>
+				<span class="text-graphite">Consejero delegado</span>
+				<span class="mt-2">Theodore Harris</span>
+				<span class="text-graphite">Alta dirección financiera</span>
+			</div>
+			<div class="flex flex-col gap-1.5 text-sm">
+				<span class="label mb-1">Legal</span>
+				<a href="/aviso-legal" class="self-start text-ink underline">Aviso legal</a>
+				<a href="/privacidad" class="self-start text-ink underline">Privacidad</a>
+			</div>
+		</div>
+		<p class="note m-0 max-w-[90ch]">
+			True Colors es un implante experimental y requiere intervención quirúrgica. Los significados de los colores están en estudio y no son conclusiones científicas. Web de ficción creada para promocionar la novela <em>True Colors</em>, de SaraCS. Más información en el <a href="/aviso-legal" class="text-ink underline">aviso legal</a>.
+		</p>
+		<div class="film" aria-hidden="true"></div>
+		<div class="flex flex-wrap justify-between gap-3 font-labels text-xs text-muted">
+			<span>© 2033 LightSphere · True Colors</span>
+			<span class="flex items-center gap-1">
+				Hecho con <Heart size="16" /> por <a href={authorUrl} target="_blank" rel="noopener noreferrer" class="text-ink underline">Xabier F</a>
+			</span>
+		</div>
+	</div>
+	</div>
+</footer>

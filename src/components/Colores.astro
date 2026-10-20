@@ -1,0 +1,65 @@
+---
+import { User } from '@lucide/astro';
+const colors_discovered = [
+	{ id: 'OBS-001', name: 'Naranja', color: '#e0965f' },
+	{ id: 'OBS-002', name: 'Azul', color: '#6f97c4' },
+];
+---
+
+<section id="colores" aria-labelledby="colores-title" class="section-y border-t border-line bg-sheet">
+	<div class="wrap flex flex-col gap-12 md:gap-16">
+		<div class="grid gap-6 md:grid-cols-[1.25fr_1fr] md:items-end md:gap-16">
+			<h2 id="colores-title" class="heading-section">
+				Cada color significa algo.
+				<span class="serif">
+					Aún no sabemos <span class="ink-fade">qué.</span>
+				</span>
+			</h2>
+			<p class="lede m-0">
+				El color es personal: cada portador ve el suyo y no cambia. Lo estamos estudiando con los participantes de la beta y los primeros usuarios. Hasta ahora hemos registrado
+				dos.
+			</p>
+		</div>
+		<div class="grid gap-1.5 border border-line bg-paper p-1.5 md:grid-cols-3">
+			{colors_discovered.map((color) => (
+				<article class="flex flex-col border border-line bg-sheet">
+					<div class="flex items-center justify-between border-b border-line px-5 py-3">
+						<span class="font-labels text-xs text-graphite">{color.id}</span>
+						<span class="chip">EN ESTUDIO</span>
+					</div>
+					<div class="grid flex-1 place-items-center py-10">
+						<div class="relative grid size-55 place-items-center" style={`color:${color.color}`}>
+							<svg viewBox="0 0 220 220" fill="none" stroke="currentColor" class="absolute inset-0" aria-hidden="true">
+								<path d="M110 8 L212 110 L110 212 L8 110 Z" opacity="0.25"></path>
+								<path d="M110 28 L192 110 L110 192 L28 110 Z" opacity="0.5"></path>
+								<path d="M110 48 L172 110 L110 172 L48 110 Z" opacity="0.85"></path>
+							</svg>
+							<User size="100" stroke="currentColor" stroke-width="0.7" aria-label={`Aura ${color.name.toLowerCase()}`} />
+						</div>
+					</div>
+					<div class="flex flex-col gap-2 border-t border-line px-5 py-5">
+						<h3 class="m-0 font-serif text-[2rem] leading-none font-medium font-stretch-[87.5%]">{color.name}</h3>
+						<p class="m-0 text-sm text-graphite">Lo ve un portador. Qué significa, aún no lo sabemos.</p>
+					</div>
+				</article>
+			))}
+
+			<article class="flex flex-col border border-dashed border-line-2 bg-paper">
+				<div class="flex items-center justify-between border-b border-dashed border-line-2 px-5 py-3">
+					<span class="font-labels text-xs text-faint">OBS-003</span>
+					<span class="chip">SIN REGISTRAR</span>
+				</div>
+				<div class="grid flex-1 place-items-center px-6 py-10 text-center">
+					<p class="m-0 font-display text-[clamp(1.5rem,2.6vw,2rem)] leading-tight font-extralight tracking-[-0.02em]">¿Y el tuyo?</p>
+				</div>
+				<div class="flex flex-col gap-3 border-t border-dashed border-line-2 px-5 py-5">
+					<p class="m-0 text-sm text-graphite">¿Ya llevas el implante? Cuéntanos qué color ves y qué crees que significa.</p>
+					<a href="#contacto" class="inline-flex min-h-11 items-center self-start text-sm font-medium text-ink underline">
+						Escríbenos
+					</a>
+				</div>
+			</article>
+		</div>
+		<p class="note m-0">Las observaciones no son conclusiones científicas. El aura solo la ve quien lleva el implante.</p>
+	</div>
+</section>

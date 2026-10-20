@@ -1,0 +1,21 @@
+---
+import { SEO } from '@/consts'
+
+interface Props {
+	title?: string
+	description?: string
+	url?: string
+	noindex?: boolean
+}
+const {
+	title = SEO.title,
+	description = SEO.description,
+	noindex = false
+} = Astro.props
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="author" content={SEO.author} />
+<meta name="keywords" content={SEO.keywords} />
+<meta name="robots" content={noindex ? 'noindex' : 'index'} />

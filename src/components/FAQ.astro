@@ -1,0 +1,32 @@
+---
+import { Plus } from '@lucide/astro';
+import { faqs } from '@/consts';
+---
+
+<section id="faq" aria-labelledby="faq-title" class="section-y border-t border-line">
+	<div class="wrap grid gap-10 md:grid-cols-[1fr_1.8fr] md:gap-16">
+		<div class="flex flex-col items-start gap-6 md:sticky md:top-32 md:self-start">
+			<h2 id="faq-title" class="heading-section">
+				Lo que más nos preguntan.
+			</h2>
+			<a href="#beta" class="btn btn-quiet crop max-md:hidden">
+				Únete a la beta
+			</a>
+		</div>
+		<div class="flex flex-col border-t border-ink">
+			{faqs.map((faq) => (
+				<details class="group border-b border-line">
+					<summary class="flex min-h-11 cursor-pointer list-none items-baseline gap-5 py-5 marker:hidden hover:text-ink [&::-webkit-details-marker]:hidden">
+						<span class="flex-1 text-lg">{faq.question}</span>
+						<Plus
+							class="size-4.5 shrink-0 self-center text-ink transition-transform duration-(--dur) ease-smooth group-open:rotate-45 motion-reduce:transition-none"
+							stroke-width={1.5}
+							aria-hidden="true"
+						/>
+					</summary>
+					<p class="m-0 max-w-[62ch] pb-6 text-graphite">{faq.answer}</p>
+				</details>
+			))}
+		</div>
+	</div>
+</section>
