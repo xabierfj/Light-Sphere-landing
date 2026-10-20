@@ -17,7 +17,7 @@ The site is in Spanish, written in the brand's voice, and built to be fast, acce
 - **Monochrome base, colour as the payoff.** The page is paper, ink and graphite. Colour appears only as the "aura" accents, which mirrors the product's idea: the world looks the same until it doesn't.
 - **Four-font system.** Outfit for display, Playfair Condensed for editorial emphasis, Hanken Grotesk for body text and JetBrains Mono for labels and specs.
 - **Accessibility first.** Skip link, labelled sections, semantic landmarks and `jsx-a11y` linting via `bun run lint`.
-- **Unknown facts stay visibly unknown.** Details the client hasn't confirmed (address, email, screen specs, book link) are bracketed placeholders such as `[DIRECCIÓN]` or `[EMAIL]`, so nothing invented ships by accident. The price (48.000 US$) is currently hard-coded in `Precios.astro` and still needs client confirmation.
+- **Unknown facts stay visibly unknown.** Details the client hasn't confirmed (address, email, screen specs, book link) are bracketed placeholders such as `[DIRECCIÓN]` or `[EMAIL]`, so nothing invented ships by accident. The price is the `[PRECIO]` placeholder in `Precios.astro`.
 
 ## Stack
 
@@ -75,7 +75,7 @@ Once the domain is known, set `site` in `astro.config.mjs` and add the custom do
 
 ## Still pending from the client
 
-Placeholders left in the copy until the client supplies the real values: contact email, location addresses, product screen specs and the book link, plus confirmation of the price.
+Placeholders left in the copy until the client supplies the real values: contact email, location addresses, product screen specs, the book link and pricing.
 
 ## Status
 
