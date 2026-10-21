@@ -9,15 +9,15 @@ The site is in Spanish, written in the brand's voice, and built to be fast, acce
 - A complete landing page: hero, how the implant works, colour guide, technology, FAQ, beta sign-up, products, locations and pricing.
 - Legal pages (`/aviso-legal`, `/privacidad`).
 - A small design system: tokens, component classes and keyframes in one stylesheet, with chamfered "clipped corner" components as the visual signature.
-- SEO basics: per-page title and description, `robots` control and favicons.
+- SEO basics: configurable title and description, `robots` control (legal pages are `noindex`) and favicons.
 - A content layer the client can edit without touching markup: all copy for products, locations, steps, specs and FAQs lives in `src/consts.ts`.
 
 ## Design decisions
 
 - **Monochrome base, colour as the payoff.** The page is paper, ink and graphite. Colour appears only as the "aura" accents, which mirrors the product's idea: the world looks the same until it doesn't.
 - **Four-font system.** Outfit for display, Playfair Condensed for editorial emphasis, Hanken Grotesk for body text and JetBrains Mono for labels and specs.
-- **Accessibility first.** Skip link, labelled sections, semantic landmarks and `jsx-a11y` linting on every build.
-- **Unknown facts stay visibly unknown.** Anything the client hasn't confirmed (price, address, email, screen specs) is a bracketed placeholder such as `[PRECIO]` or `[DIRECCIÓN]`, so nothing invented can ship by accident.
+- **Accessibility first.** Skip link, labelled sections, semantic landmarks and `jsx-a11y` linting via `bun run lint`.
+- **Unknown facts stay visibly unknown.** Details the client hasn't confirmed (address, email, screen specs, book link) are bracketed placeholders such as `[DIRECCIÓN]` or `[EMAIL]`, so nothing invented ships by accident. The price is the `[PRECIO]` placeholder in `Precios.astro`.
 
 ## Stack
 
@@ -46,11 +46,11 @@ public/           Fonts, images and favicons
 
 ```sh
 bun install
-bun dev        # http://localhost:4321
-bun build      # production build to ./dist
-bun preview    # preview the build
-bun lint       # ESLint
-bun format     # Prettier
+bun run dev    # http://localhost:4321
+bun run build  # production build to ./dist
+bun run preview # preview the build
+bun run lint   # ESLint
+bun run format # Prettier
 ```
 
 ## Deploying to Cloudflare Pages
@@ -75,7 +75,7 @@ Once the domain is known, set `site` in `astro.config.mjs` and add the custom do
 
 ## Still pending from the client
 
-Placeholders left in the copy until the client supplies the real values: contact email, location addresses, product screen specs, pricing and the book link.
+Placeholders left in the copy until the client supplies the real values: contact email, location addresses, product screen specs, the book link and pricing.
 
 ## Status
 

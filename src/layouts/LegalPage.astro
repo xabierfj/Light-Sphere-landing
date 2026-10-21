@@ -7,12 +7,13 @@ interface Props {
 	title: string;
 	code: string;
 	updated: string;
+	description: string;
 }
 
-const { title, code, updated } = Astro.props;
+const { title, code, updated, description } = Astro.props;
 ---
 
-<Layout title={`${title} · LightSphere Optics`} noindex>
+<Layout title={`${title} · LightSphere Optics`} description={description} noindex>
 	<a href="#contenido" class="sr-only z-60 bg-ink px-4 py-2 font-labels text-xs text-paper uppercase focus:not-sr-only focus:fixed focus:top-2 focus:left-2">
 		Saltar al contenido
 	</a>
