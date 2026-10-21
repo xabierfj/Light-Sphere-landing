@@ -9,6 +9,8 @@ export default defineConfig({
 	security: {
 		csp: {
 			directives: ["default-src 'self'", "img-src 'self' data:", "font-src 'self'", "object-src 'none'"],
+			// Hash of the <noscript><style> in Layout.astro; recompute if that block changes.
+			styleDirective: { hashes: ['sha256-8xfz1T5uqAvL2Ln8HGRCw+j4LnughI0l4H1G9ZItYls='] },
 		},
 	},
 	vite: {
