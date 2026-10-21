@@ -1,8 +1,19 @@
 # LightSphere Landing
 
-A one-page marketing site I designed and built for **LightSphere**, the company behind *TRUE COLORS*, an experimental single-eye micro-implant that lets you see an aura of colour around the one person you are meant to love.
+A one-page marketing site I designed and built for **LightSphere**, the company behind _TRUE COLORS_, an experimental single-eye micro-implant that lets you see an aura of colour around the one person you are meant to love.
 
 The site is in Spanish, written in the brand's voice, and built to be fast, accessible and easy for the client to keep editing.
+
+![Hero of the LightSphere landing page](docs/hero.png)
+
+<p align="center">
+  <img src="docs/colores.png" alt="Colour observations section" width="49%" />
+  <img src="docs/productos.png" alt="Products section" width="49%" />
+</p>
+
+<p align="center">
+  <img src="docs/mobile.png" alt="Mobile layout" width="240" />
+</p>
 
 ## What I delivered
 
@@ -21,14 +32,14 @@ The site is in Spanish, written in the brand's voice, and built to be fast, acce
 
 ## Stack
 
-| Area      | Choice                                      |
-| :-------- | :------------------------------------------ |
-| Framework | [Astro](https://astro.build) 7              |
-| Styling   | Tailwind CSS 4 (via the Vite plugin)        |
-| Icons     | `@lucide/astro`                             |
-| Language  | TypeScript                                  |
-| Quality   | ESLint (Astro + jsx-a11y), Prettier         |
-| Tooling   | Bun, Node >= 22.22                         |
+| Area      | Choice                               |
+| :-------- | :----------------------------------- |
+| Framework | [Astro](https://astro.build) 7       |
+| Styling   | Tailwind CSS 4 (via the Vite plugin) |
+| Icons     | `@lucide/astro`                      |
+| Language  | TypeScript                           |
+| Quality   | ESLint (Astro + jsx-a11y), Prettier  |
+| Tooling   | Bun, Node >= 22.22                   |
 
 ## Project structure
 
@@ -64,7 +75,7 @@ The site is fully static, so no adapter is needed. In the Cloudflare dashboard g
 | Build command          | `bun run build` |
 | Build output directory | `dist`          |
 
-`.node-version` pins Node, and `public/_headers` sets security headers and long-lived caching for hashed assets and fonts. Or deploy from the terminal:
+`.node-version` pins Node. Or deploy from the terminal (`wrangler.jsonc` points at `dist`):
 
 ```sh
 bun run build
@@ -75,8 +86,12 @@ Once the domain is known, set `site` in `astro.config.mjs` and add the custom do
 
 ## Still pending from the client
 
-Placeholders left in the copy until the client supplies the real values: contact email, location addresses, product screen specs, the book link and pricing.
+Placeholders left in the copy until the client supplies the real values: the location address (`[DIRECCIÓN]`) and the book link (`[ENLACE LIBRO]`), both in `src/components/Sedes.astro`.
 
 ## Status
 
-Built and ready for content sign-off. Production domain to be set in `astro.config.mjs` (`site`) once confirmed.
+Built and ready for content sign-off. `site` in `astro.config.mjs` is set to `https://www.truecolors.pro`; confirm it matches the final domain.
+
+## License
+
+[MIT](LICENSE) © 2026 Xabier Figueroa
