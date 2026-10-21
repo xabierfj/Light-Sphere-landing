@@ -350,3 +350,27 @@
 		animation: none;
 	}
 }
+
+/* Motion product figure (inline SVG). Lives here, not in the SVG, so the CSP needs no inline style. */
+@media (prefers-reduced-motion: no-preference) {
+	.pm-orbit {
+		transform-box: view-box;
+		transform-origin: 120px 70px;
+		animation: pm-spin 16s linear infinite;
+	}
+	.pm-dots {
+		transform-box: view-box;
+		transform-origin: 120px 70px;
+		animation: pm-spin-rev 37s linear infinite;
+	}
+}
+@keyframes pm-spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+@keyframes pm-spin-rev {
+	to {
+		transform: rotate(-360deg);
+	}
+}
