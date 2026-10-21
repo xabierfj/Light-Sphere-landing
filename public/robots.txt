@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.truecolors.pro/sitemap.xml
+Sitemap: https://truecolors.pro/sitemap.xml

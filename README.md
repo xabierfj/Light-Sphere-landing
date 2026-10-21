@@ -79,4 +79,8 @@ Placeholders left in the copy until the client supplies the real values: contact
 
 ## Status
 
-Built and ready for content sign-off. Production domain to be set in `astro.config.mjs` (`site`) once confirmed.
+Built and ready for content sign-off. `site` in `astro.config.mjs` is set to `https://truecolors.pro`; confirm it matches the final domain.
+
+## License
+
+[MIT](LICENSE) © 2026 Xabier Figueroa
