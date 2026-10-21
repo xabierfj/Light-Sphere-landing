@@ -169,7 +169,7 @@ export const products: Product[] = [
 		figure: 'motion',
 		name: 'Lentillas con efectos de movimiento',
 		desc: 'Efectos visuales en movimiento para disfraces, Halloween y similares.',
-		specs: ['pantalla [PANTALLA]', 'batería de alta capacidad', 'chip de procesamiento de imagen'],
+		specs: ['pantalla microLED translúcida con neón RGB', 'batería de alta capacidad', 'chip de procesamiento de imagen'],
 	},
 	{
 		code: 'LS-400',
