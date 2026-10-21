@@ -1,4 +1,4 @@
-export const SITE_URL = 'https://www.truecolors.pro';
+export const SITE_URL = 'https://truecolors.pro';
 
 export interface Section {
 	id: string;
