@@ -1,5 +1,8 @@
 ---
 import { about, steps } from '@/consts';
+
+// Literal classes so Tailwind can see them and no inline style is needed (CSP).
+const markLeft = ['left-[10%]', 'left-[35%]', 'left-[60%]', 'left-[85%]'];
 ---
 
 <section id="implante" aria-labelledby="implante-title" class="section-y">
@@ -42,7 +45,7 @@ import { about, steps } from '@/consts';
 								</span>
 								<span class="relative block h-3 w-10" aria-hidden="true">
 									<span class="absolute inset-x-0 top-1/2 h-px bg-line-2"></span>
-									<span class="absolute inset-y-0.5 w-[1.5px] bg-ink" style={`left: ${10 + i * 25}%`}></span>
+									<span class={`absolute inset-y-0.5 w-[1.5px] bg-ink ${markLeft[i]}`}></span>
 								</span>
 							</div>
 							<h4 class="m-0 mt-3 text-lg leading-snug font-semibold">{step.title}</h4>

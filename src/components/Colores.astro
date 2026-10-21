@@ -1,8 +1,8 @@
 ---
 import { User } from '@lucide/astro';
 const colors_discovered = [
-	{ id: 'OBS-001', name: 'Naranja', color: '#e0965f' },
-	{ id: 'OBS-002', name: 'Azul', color: '#6f97c4' },
+	{ id: 'OBS-001', name: 'Naranja', tone: 'text-[#e0965f]' },
+	{ id: 'OBS-002', name: 'Azul', tone: 'text-[#6f97c4]' },
 ];
 ---
 
@@ -28,7 +28,7 @@ const colors_discovered = [
 						<span class="chip">EN ESTUDIO</span>
 					</div>
 					<div class="grid flex-1 place-items-center py-10">
-						<div class="relative grid size-55 place-items-center" style={`color:${color.color}`}>
+						<div class={`relative grid size-55 place-items-center ${color.tone}`}>
 							<svg viewBox="0 0 220 220" fill="none" stroke="currentColor" class="absolute inset-0" aria-hidden="true">
 								<path d="M110 8 L212 110 L110 212 L8 110 Z" opacity="0.25"></path>
 								<path d="M110 28 L192 110 L110 192 L28 110 Z" opacity="0.5"></path>

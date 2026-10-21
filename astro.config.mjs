@@ -6,6 +6,11 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
 	//site: 'https://www.lightsphereoptics.com'
+	security: {
+		csp: {
+			directives: ["default-src 'self'", "img-src 'self' data:", "font-src 'self'", "object-src 'none'"],
+		},
+	},
 	vite: {
 		plugins: [tailwindcss()],
 	},
