@@ -90,7 +90,7 @@ Placeholders left in the copy until the client supplies the real values: the loc
 
 ## Status
 
-Built and ready for content sign-off. `site` in `astro.config.mjs` is set to `https://www.truecolors.pro`; confirm it matches the final domain.
+Built and ready for content sign-off. `site` in `astro.config.mjs` is set to `https://truecolors.pro`; confirm it matches the final domain.
 
 ## License
 
