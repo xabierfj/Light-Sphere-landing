@@ -28,7 +28,7 @@ The site is in Spanish, written in the brand's voice, and built to be fast, acce
 | Icons     | `@lucide/astro`                             |
 | Language  | TypeScript                                  |
 | Quality   | ESLint (Astro + jsx-a11y), Prettier         |
-| Tooling   | Bun, Node >= 22.12                          |
+| Tooling   | Bun, Node >= 22.22                         |
 
 ## Project structure
 
