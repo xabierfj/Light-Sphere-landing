@@ -1,4 +1,4 @@
-export const SITE_URL = 'https://www.lightsphereoptics.com';
+export const SITE_URL = 'https://www.truecolors.pro';
 
 export interface Section {
 	id: string;
