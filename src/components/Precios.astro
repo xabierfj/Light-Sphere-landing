@@ -1,4 +1,6 @@
 ---
+import { AMAZON_URL } from "@/consts";
+
 ---
 
 <section id="precio" aria-labelledby="precio-title" class="section-y border-t border-line">
@@ -31,7 +33,7 @@
 						<a href="#beta" class="btn btn-primary crop max-sm:w-full">
 							Únete a la beta
 						</a>
-						<a role="link" href="#" aria-disabled="true" title="Enlace a Amazon" class="btn btn-quiet crop max-sm:w-full cursor-pointer hover:bg-panel/50">
+						<a role="link" href={AMAZON_URL} aria-disabled="true" title="Enlace a Amazon" class="btn btn-quiet crop max-sm:w-full cursor-pointer hover:bg-panel/50">
 							Reservar consulta
 						</a>
 					</div>

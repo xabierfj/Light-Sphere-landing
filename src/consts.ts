@@ -1,5 +1,5 @@
 export const SITE_URL = 'https://www.lightsphereoptics.com';
-
+export const AMAZON_URL = 'https://www.amazon.es/dp/8409921316?ref=ppx_yo2ov_dt_b_fed_asin_title';
 export interface Section {
 	id: string;
 	label: string;

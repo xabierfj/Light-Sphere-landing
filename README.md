@@ -28,7 +28,6 @@ The site is in Spanish, written in the brand's voice, and built to be fast, acce
 - **Monochrome base, colour as the payoff.** The page is paper, ink and graphite. Colour appears only as the "aura" accents, which mirrors the product's idea: the world looks the same until it doesn't.
 - **Four-font system.** Outfit for display, Playfair Condensed for editorial emphasis, Hanken Grotesk for body text and JetBrains Mono for labels and specs.
 - **Accessibility first.** Skip link, labelled sections, semantic landmarks and `jsx-a11y` linting via `bun run lint`.
-- **Unknown facts stay visibly unknown.** Details the client hasn't confirmed (address, email, screen specs, book link) are bracketed placeholders such as `[DIRECCIÓN]` or `[EMAIL]`, so nothing invented ships by accident.
 
 ## Stack
 
@@ -83,10 +82,6 @@ bunx wrangler pages deploy
 ```
 
 Once the domain is known, set `site` in `astro.config.mjs` and add the custom domain in the Pages project.
-
-## Still pending from the client
-
-Placeholders left in the copy until the client supplies the real values: the location address (`[DIRECCIÓN]`) and the book link (`[ENLACE LIBRO]`), both in `src/components/Sedes.astro`.
 
 ## Status
 
