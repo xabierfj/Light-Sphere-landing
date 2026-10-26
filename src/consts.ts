@@ -77,7 +77,7 @@ export const SECTIONS: Section[] = [
 	{ id: 'beta', label: 'Beta' },
 	{ id: 'productos', label: 'Productos', inNav: true },
 	{ id: 'sedes', label: 'Sedes', inNav: true },
-	{ id: 'precio', label: 'Precio', inNav: true },
+	{ id: 'precio', label: 'Precio', inNav: true }
 ];
 
 export const steps: Step[] = [

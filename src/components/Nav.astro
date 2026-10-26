@@ -1,6 +1,6 @@
 ---
 import Logo from '@/assets/svg/logo_ls.svg';
-import { SECTIONS } from '@/consts';
+import { SECTIONS, AMAZON_URL } from '@/consts';
 
 const links = SECTIONS.filter((section) => section.inNav).map((section) => ({
 	href: `/#${section.id}`,
@@ -33,6 +33,11 @@ const links = SECTIONS.filter((section) => section.inNav).map((section) => ({
 				</nav>
 
 				<div class="flex items-center justify-end gap-2 max-[960px]:ml-auto">
+					<a href={AMAZON_URL} class="btn btn-primary crop whitespace-nowrap max-sm:px-4 max-[359px]:hidden">
+						<span>
+							El libro
+						</span>
+					</a>
 					<a href="/#beta" class="btn btn-quiet crop whitespace-nowrap max-sm:px-4 max-[359px]:hidden">
 						<span>
 							Únete<span class="max-sm:hidden"> a la beta</span>
